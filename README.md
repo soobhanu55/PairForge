@@ -4,6 +4,12 @@ A market-neutral statistical arbitrage research pipeline: cointegration screenin
 
 This is a research tool, not a live trading system. The honest finding below (a negative out-of-sample Sharpe ratio on a sector-ETF universe) is reported deliberately, not hidden, because the point of walk-forward validation is to catch exactly this kind of gap between an in-sample-selected strategy and its true out-of-sample performance.
 
+## Demo
+
+The recording below is the actual, unedited output of `python main.py` against real market data, not a mockup.
+
+![Terminal recording of the pipeline running end to end](docs/demo.gif)
+
 ## Why walk-forward validation
 
 Selecting a cointegrated pair once on the full price history and then backtesting on that same history is look-ahead bias: the pair was chosen *because* it worked over that period. This pipeline instead re-runs pair selection on a rolling formation window using only data available at that point in time, then evaluates performance strictly on the unseen trading window that follows. The two are reported side by side so the gap between them is visible, not smoothed over.
